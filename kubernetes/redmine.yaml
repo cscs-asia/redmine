@@ -14,10 +14,21 @@ spec:
     spec:
       containers:
         - name: redmine
-          image: redmine:4.1
+          image: cscsasia/redmine:20210426
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
                 name: postgres-config
+          volumeMounts:
+            - mountPath: /usr/src/redmine/files
+              name: redmine-pv
+              subPath: files
+            - mountPath: /usr/src/redmine/plugins
+              name: redmine-pv
+              subPath: plugins
+      volumes:
+        - name: redmine-pv
+          persistentVolumeClaim:
+            claimName: redmine-pv-claim
