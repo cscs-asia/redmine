@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: redmine
-          image: cscsasia/redmine:20210426
+          image: cscsasia/redmine:1622194810
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 3000
@@ -28,6 +28,9 @@ spec:
             - mountPath: /usr/src/redmine/plugins
               name: redmine-pv
               subPath: plugins
+            - mountPath: /usr/src/redmine/public/themes
+              name: redmine-pv
+              subPath: themes
       volumes:
         - name: redmine-pv
           persistentVolumeClaim:

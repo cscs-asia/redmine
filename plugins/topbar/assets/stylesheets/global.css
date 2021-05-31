@@ -1,0 +1,7 @@
+#top-menu a.help {
+  display: none;
+}
+
+#top-menu a {
+  font-size: 1.4rem;
+}
