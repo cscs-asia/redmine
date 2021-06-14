@@ -12,4 +12,6 @@ RUN /bin/bash -c " \
       rvm --default use ruby-2.6.7; \
     ";
     
-COPY zh-TW.yml /usr/src/redmine/config/locales/zh-TW.yml
+COPY docker-entrypoint.sh /
+
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]

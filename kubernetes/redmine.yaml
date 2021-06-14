@@ -14,14 +14,20 @@ spec:
     spec:
       containers:
         - name: redmine
-          image: cscsasia/redmine:1622194810
+          image: cscsasia/redmine:1623642623
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
-                name: postgres-config
+                name: environment
           volumeMounts:
+            - name: redmine-yml
+              mountPath: /usr/src/redmine/configuration.yml
+              subPath: configuration.yml
+            - name: redmine-yml
+              mountPath: /usr/src/redmine/zh-TW.yml
+              subPath: zh-TW.yml
             - mountPath: /usr/src/redmine/files
               name: redmine-pv
               subPath: files
@@ -31,7 +37,13 @@ spec:
             - mountPath: /usr/src/redmine/public/themes
               name: redmine-pv
               subPath: themes
+            - mountPath: /home/redmine/.gnupg
+              name: redmine-pv
+              subPath: gnupg
       volumes:
         - name: redmine-pv
           persistentVolumeClaim:
             claimName: redmine-pv-claim
+        - name: redmine-yml
+          configMap:
+            name: configuration

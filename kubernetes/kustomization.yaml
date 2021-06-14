@@ -5,3 +5,11 @@ resources:
   - postgres-service.yaml
   - redmine.yaml
   - redmine-service.yaml
+configMapGenerator:
+  - name: environment
+    envs:
+      - ./postgresql.env
+  - name: configuration
+    files:
+      - ./configuration.yml
+      - ./zh-TW.yml

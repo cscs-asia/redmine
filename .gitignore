@@ -1,1 +1,2 @@
-kubernetes/postgres-config.yaml
+kubernetes/configuration.yml
+kubernetes/postgresql.env
