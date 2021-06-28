@@ -282,16 +282,16 @@
   error_scm_annotate: "項目不存在或項目無法被加上附註。"
   error_scm_annotate_big_text_file: 此項目無法被標註，因為它已經超過最大的文字檔大小。
   error_issue_not_found_in_project: '該任務不存在或不屬於此專案'
-  error_no_tracker_in_project: '此專案尚未指定追蹤標籤。請檢查專案的設定資訊。'
+  error_no_tracker_in_project: '此專案尚未指定服務標籤。請檢查專案的設定資訊。'
   error_no_default_issue_status: '尚未定義任務狀態的預設值。請您前往「網站管理」->「任務狀態清單」頁面，檢查相關組態設定。'
   error_can_not_delete_custom_field: 無法刪除自訂欄位
-  error_can_not_delete_tracker: "此追蹤標籤已包含任務，無法被刪除。"
+  error_can_not_delete_tracker: "此服務標籤已包含任務，無法被刪除。"
   error_can_not_remove_role: "此角色已被使用，無法將其刪除。"
   error_can_not_reopen_issue_on_closed_version: '分派給「已結束」版本的任務，無法再將其狀態變更為「進行中」'
   error_can_not_archive_project: 此專案無法被封存
   error_issue_done_ratios_not_updated: "任務完成百分比未更新。"
-  error_workflow_copy_source: '請選擇一個來源任務追蹤標籤或角色'
-  error_workflow_copy_target: '請選擇一個（或多個）目的任務追蹤標籤或角色'
+  error_workflow_copy_source: '請選擇一個來源任務服務標籤或角色'
+  error_workflow_copy_target: '請選擇一個（或多個）目的任務服務標籤或角色'
   error_unable_delete_issue_status: '無法刪除任務狀態 (%{value})'
   error_unable_to_connect: "無法連線至（%{value}）"
   error_attachment_too_big: "這個檔案無法被上傳，因為它已經超過最大的檔案大小 (%{max_size})"
@@ -303,8 +303,8 @@
   error_can_not_read_import_file: "讀取匯入檔案時發生錯誤"
   error_attachment_extension_not_allowed: "附件之附檔名不允許使用 %{extension}"
   error_ldap_bind_credentials: "無效的 LDAP 帳號/密碼"
-  error_no_tracker_allowed_for_new_issue_in_project: "此專案沒有您可用來建立新任務的追蹤標籤"
-  error_no_projects_with_tracker_allowed_for_new_issue: "此追蹤標籤沒有您可用來建立新任務的專案"
+  error_no_tracker_allowed_for_new_issue_in_project: "此專案沒有您可用來建立新任務的服務標籤"
+  error_no_projects_with_tracker_allowed_for_new_issue: "此服務標籤沒有您可用來建立新任務的專案"
   error_move_of_child_not_possible: "子任務 %{child} 無法被搬移至新的專案: %{errors}"
   error_cannot_reassign_time_entries_to_an_issue_about_to_be_deleted: "無法將耗用工時重新分配給即將被刪除的問題"
   warning_fields_cleared_on_bulk_edit: "選取物件的變更將導致一個或多個欄位之內容值被自動刪除"
@@ -364,7 +364,7 @@
   field_notes: 筆記
   field_is_closed: 任務已結束
   field_is_default: 預設值
-  field_tracker: 追蹤標籤
+  field_tracker: 服務標籤
   field_subject: 主旨
   field_due_date: 完成日期
   field_assigned_to: 被分派者
@@ -538,7 +538,7 @@
   setting_thumbnails_size: "縮圖大小 (單位: 像素 pixels)"
   setting_non_working_week_days: 非工作日
   setting_jsonp_enabled: 啟用 JSONP 支援
-  setting_default_projects_tracker_ids: 新專案預設使用的追蹤標籤
+  setting_default_projects_tracker_ids: 新專案預設使用的服務標籤
   setting_mail_handler_excluded_filenames: 移除符合下列名稱的附件
   setting_force_default_language_for_anonymous: 強迫匿名用戶使用預設語言
   setting_force_default_language_for_loggedin: 強迫已登入用戶使用預設語言
@@ -669,10 +669,10 @@
   label_member: 成員
   label_member_new: 建立新成員
   label_member_plural: 成員
-  label_tracker: 追蹤標籤
-  label_tracker_plural: 追蹤標籤清單
-  label_tracker_all: 所有的追蹤標籤
-  label_tracker_new: 建立新的追蹤標籤
+  label_tracker: 服務標籤
+  label_tracker_plural: 服務標籤清單
+  label_tracker_all: 所有的服務標籤
+  label_tracker_new: 建立新的服務標籤
   label_workflow: 流程
   label_issue_status: 任務狀態
   label_issue_status_plural: 任務狀態清單
@@ -901,7 +901,7 @@
   label_diff_inline: 直列
   label_diff_side_by_side: 並排
   label_options: 選項清單
-  label_copy_workflow_from: 從以下追蹤標籤複製工作流程
+  label_copy_workflow_from: 從以下服務標籤複製工作流程
   label_permissions_report: 權限報表
   label_watched_issues: 監看中的任務清單
   label_related_issues: 相關的任務清單
@@ -1008,7 +1008,7 @@
   label_copy_source: 來源
   label_copy_target: 目的地
   label_copy_same_as_target: 與目的地相同
-  label_display_used_statuses_only: 僅顯示此追蹤標籤所使用之狀態
+  label_display_used_statuses_only: 僅顯示此服務標籤所使用之狀態
   label_api_access_key: API 存取金鑰
   label_missing_api_access_key: 找不到 API 存取金鑰
   label_api_access_key_created_on: "API 存取金鑰建立於 %{value} 之前"
@@ -1182,7 +1182,7 @@
   text_min_max_length_info: 0 代表「不限制」
   text_project_destroy_confirmation: 您確定要刪除這個專案和其他相關資料？
   text_subprojects_destroy_warning: "下列子專案： %{value} 將一併被刪除。"
-  text_workflow_edit: 選擇角色與追蹤標籤以設定其工作流程
+  text_workflow_edit: 選擇角色與服務標籤以設定其工作流程
   text_are_you_sure: 確定執行？
   text_journal_changed: "%{label} 從 %{old} 變更為 %{new}"
   text_journal_changed_no_detail: "%{label} 已更新"
@@ -1196,7 +1196,7 @@
   text_caracters_maximum: "最多 %{count} 個字元."
   text_caracters_minimum: "長度必須大於 %{count} 個字元."
   text_length_between: "長度必須介於 %{min} 至 %{max} 個字元之間."
-  text_tracker_no_workflow: 此追蹤標籤尚未定義工作流程
+  text_tracker_no_workflow: 此服務標籤尚未定義工作流程
   text_unallowed_characters: 不允許的字元
   text_comma_separated: 可輸入多個值（須以逗號分隔）。
   text_line_separated: 可輸入多個值（須以換行符號分隔，即每列只能輸入一個值）。
@@ -1208,7 +1208,7 @@
   text_issue_category_destroy_assignments: 移除這些任務的分類
   text_issue_category_reassign_to: 重新分派這些任務至其它分類
   text_user_mail_option: "對於那些未被選擇的專案，將只會接收到您正在觀察中，或是參與中的任務通知。（「參與中的任務」包含您建立的或是分派給您的任務）"
-  text_no_configuration_data: "角色、追蹤標籤、任務狀態與流程尚未被設定完成。\n強烈建議您先載入預設的組態。將預設組態載入之後，您可再變更其中之值。"
+  text_no_configuration_data: "角色、服務標籤、任務狀態與流程尚未被設定完成。\n強烈建議您先載入預設的組態。將預設組態載入之後，您可再變更其中之值。"
   text_load_default_configuration: 載入預設組態
   text_status_changed_by_changeset: "已套用至變更集 %{value}."
   text_time_logged_by_changeset: "紀錄於變更集 %{value}."
@@ -1324,18 +1324,18 @@
   label_next_week: 下一週
   label_next_month: 下個月
   text_role_no_workflow: 此角色尚未定義工作流程
-  text_status_no_workflow: 工作流程中尚未有使用此狀態的追蹤標籤
+  text_status_no_workflow: 工作流程中尚未有使用此狀態的服務標籤
   setting_mail_handler_preferred_body_part: Multipart (HTML) 郵件中偏好使用的部分
   setting_show_status_changes_in_mail_subject: 於任務通知電子郵件的主旨中顯示狀態變更
   label_inherited_from_parent_project: 繼承自父專案
   label_inherited_from_group: 繼承自 %{name} 群組
-  label_trackers_description: 追蹤標籤說明
-  label_open_trackers_description: 檢視所有追蹤標籤的說明
+  label_trackers_description: 服務標籤說明
+  label_open_trackers_description: 檢視所有服務標籤的說明
   label_preferred_body_part_text: 純文字
   label_preferred_body_part_html: HTML (實驗性)
   field_parent_issue_subject: 父任務主旨
   permission_edit_own_issues: 編輯自己的任務
-  text_select_apply_tracker: 選擇追蹤標籤
+  text_select_apply_tracker: 選擇服務標籤
   label_updated_issues: 已更新之任務
   text_avatar_server_config_html: 目前使用的大頭像(虛擬人偶)伺服器是 <a href="%{url}">%{url}</a>。 您可於 config/configuration.yml 中進行設定。
   setting_gantt_months_limit: 甘特圖中月份顯示數量的最大值
