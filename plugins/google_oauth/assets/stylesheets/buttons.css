@@ -1,0 +1,93 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  margin: 0 auto;
+  width: 50%;
+  padding: 60px 0;
+  height: 100%;
+}
+
+@media screen and (max-width: 899px) {
+  .login-container {
+    width: 100%;
+    height: inherit;
+  }
+}
+
+#content #login-form {
+  padding: 0;
+  height: auto;
+  width: 100%;
+  max-width: 320px;
+}
+
+.login-with-google-oauth {
+  width:  100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-password-button {
+  border: none;
+  background-color: transparent;
+  color: rgb(85,120,235);
+  cursor: pointer;
+}
+
+.login-google-button-icon {
+  width: 191px;
+  height: 46px;
+  cursor: pointer;
+}
+
+.login-br {
+  width:  100%;
+  margin: 10px 0;
+  max-width: 320px;
+  height: 20px;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-br-line {
+  border-bottom: 1px solid #ccc;
+  height: 50%;
+  width: 100%;
+}
+
+.login-br-text {
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content div.flash {
+  position: absolute;
+  width: 80%;
+  top: 0;
+  left: 10%;
+  bottom: inherit;
+  right: inherit;
+}
+
+@media screen and (max-width: 899px) {
+  #content div.flash {
+    position: relative;
+    width: 80%;
+    top: 0;
+    left: inherit;
+    bottom: inherit;
+    right: 10px;
+    padding-left: 24px;
+  }
+}

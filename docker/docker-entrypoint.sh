@@ -2,6 +2,10 @@
 set -Eeo pipefail
 # TODO add "-u"
 
+if [ "$(id -u)" = '0' ]; then
+	/etc/init.d/nginx start
+fi
+
 # usage: file_env VAR [DEFAULT]
 #    ie: file_env 'XYZ_DB_PASSWORD' 'example'
 # (will allow for "$XYZ_DB_PASSWORD_FILE" to fill in the value of
@@ -125,9 +129,6 @@ if [ -n "$isLikelyRedmine" ]; then
 	# install additional gems for Gemfile.local and plugins
 	bundle check || bundle install
 
-  cp ./configuration.yml ./config/configuration.yml || echo "Not found configuration.yml"
-  cp ./zh-TW.yml ./config/locales/zh-TW.yml || echo "Not found zh-TW.yml"
-
 	if [ ! -s config/secrets.yml ]; then
 		file_env 'REDMINE_SECRET_KEY_BASE'
 		if [ -n "$REDMINE_SECRET_KEY_BASE" ]; then
@@ -155,5 +156,13 @@ if [ -n "$isLikelyRedmine" ]; then
 		set -- tini -- "$@"
 	fi
 fi
+
+cp ./additional_environment.rb ./config/additional_environment.rb || echo "Not found additional_environment.rb"
+cp ./configuration.yml ./config/configuration.yml || echo "Not found configuration.yml"
+cp ./zh-TW.yml ./config/locales/zh-TW.yml || echo "Not found zh-TW.yml"
+
+cd /usr/src/redmine/plugins/google_oauth; bundle install;
+cd /usr/src/redmine/plugins/topbar; bundle install;
+cd /usr/src/redmine/
 
 exec "$@"

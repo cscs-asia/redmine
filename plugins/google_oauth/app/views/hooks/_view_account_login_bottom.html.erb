@@ -1,0 +1,19 @@
+<% if Setting.plugin_google_oauth[:oauth_authentification] %>
+  <%= stylesheet_link_tag 'buttons', plugin: 'google_oauth' %>
+  <%= javascript_include_tag 'buttons', plugin: 'google_oauth' %>
+  <%= content_tag :div, id: 'login-container', class: 'login-container' do %>
+    <%= content_tag :div, id: 'login-with-google-oauth', class: 'login-with-google-oauth' do %>
+      <%= button_tag l(:login_via_password), type: 'button', id: 'login-password-button', class: 'login-password-button' %>
+      <%= content_tag :div, class: 'login-br' do %>
+        <%= content_tag :div, nil, class: 'login-br-line' %>
+        <%= content_tag :div, 'OR', class: 'login-br-text' %>
+        <%= content_tag :div, nil, class: 'login-br-line' %>
+      <% end %>
+      <%= content_tag :div, class: 'login-google-button' do %>
+        <%= link_to oauth_by_google_path(:back_url => back_url) do %>
+          <%= image_tag('/plugin_assets/google_oauth/images/btn_google_signin_dark_normal.png', class: 'login-google-button-icon', :alt => l(:login_via_google)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

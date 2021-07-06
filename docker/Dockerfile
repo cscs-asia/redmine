@@ -1,8 +1,8 @@
-FROM redmine:4.1
+FROM redmine:4.2
 
-RUN apt-get update && apt-get install -y gcc g++ make gpg curl;
+RUN apt-get update && apt-get install -y gcc g++ make gpg curl nginx;
 
-RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB; \
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB; \
     curl -sSL https://get.rvm.io | bash -s stable --ruby;
 
 RUN /bin/bash -c " \
@@ -12,6 +12,10 @@ RUN /bin/bash -c " \
       rvm --default use ruby-2.6.7; \
     ";
     
-COPY docker-entrypoint.sh /
+COPY ./plugins /usr/src/redmine/plugins
+
+COPY ./docker/docker-entrypoint.sh /
+
+COPY nginx.conf /etc/nginx/sites-enabled/default
 
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]

@@ -14,32 +14,60 @@ spec:
     spec:
       containers:
         - name: redmine
-          image: cscsasia/redmine:1623642623
+          image: redmine
           imagePullPolicy: "IfNotPresent"
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+            limits:
+              cpu: "6000m"
+              memory: "6000Mi"
+          livenessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            httpGet:
+              path: /login
+              port: http
+              scheme: HTTP
+          readinessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            httpGet:
+              path: /login
+              port: http
+              scheme: HTTP
           envFrom:
             - configMapRef:
                 name: environment
           volumeMounts:
             - name: redmine-yml
-              mountPath: /usr/src/redmine/configuration.yml
               subPath: configuration.yml
+              mountPath: /usr/src/redmine/configuration.yml
             - name: redmine-yml
-              mountPath: /usr/src/redmine/zh-TW.yml
               subPath: zh-TW.yml
-            - mountPath: /usr/src/redmine/files
-              name: redmine-pv
+              mountPath: /usr/src/redmine/zh-TW.yml
+            - name: redmine-yml
+              subPath: additional_environment.rb
+              mountPath: /usr/src/redmine/additional_environment.rb
+            - name: redmine-pv
               subPath: files
-            - mountPath: /usr/src/redmine/plugins
-              name: redmine-pv
-              subPath: plugins
-            - mountPath: /usr/src/redmine/public/themes
-              name: redmine-pv
+              mountPath: /usr/src/redmine/files
+            - name: redmine-pv
               subPath: themes
+              mountPath: /usr/src/redmine/public/themes
+            - name: redmine-pv
+              subPath: plugins/openpgp
+              mountPath: /usr/src/redmine/plugins/openpgp
             - mountPath: /home/redmine/.gnupg
-              name: redmine-pv
               subPath: gnupg
+              name: redmine-pv
       volumes:
         - name: redmine-pv
           persistentVolumeClaim:
