@@ -8,5 +8,5 @@ rm image.tar
 echo "image: ${CI_PACKAGE_REGISTRY}"
 
 cd ./kubernetes
-kustomize edit set image redmine=${CI_PACKAGE_REGISTRY}
-kustomize build ./ | kubectl apply -f - --wait=true
+../kustomize edit set image redmine=${CI_PACKAGE_REGISTRY}
+../kustomize build ./ | kubectl apply -f - --wait=true

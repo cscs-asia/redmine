@@ -60,9 +60,6 @@ spec:
               subPath: files
               mountPath: /usr/src/redmine/files
             - name: redmine-pv
-              subPath: themes
-              mountPath: /usr/src/redmine/public/themes
-            - name: redmine-pv
               subPath: plugins/openpgp
               mountPath: /usr/src/redmine/plugins/openpgp
             - mountPath: /home/redmine/.gnupg

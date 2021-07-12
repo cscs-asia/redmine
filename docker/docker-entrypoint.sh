@@ -161,8 +161,7 @@ cp ./additional_environment.rb ./config/additional_environment.rb || echo "Not f
 cp ./configuration.yml ./config/configuration.yml || echo "Not found configuration.yml"
 cp ./zh-TW.yml ./config/locales/zh-TW.yml || echo "Not found zh-TW.yml"
 
-cd /usr/src/redmine/plugins/google_oauth; bundle install;
-cd /usr/src/redmine/plugins/topbar; bundle install;
-cd /usr/src/redmine/
+bundle install --without development test
+rake redmine:plugins:migrate RAILS_ENV=production
 
 exec "$@"

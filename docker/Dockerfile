@@ -1,4 +1,4 @@
-FROM redmine:4.2
+FROM redmine:4.2.1
 
 RUN apt-get update && apt-get install -y gcc g++ make gpg curl nginx;
 
@@ -11,7 +11,9 @@ RUN /bin/bash -c " \
       rvm install ruby-2.6.7; \
       rvm --default use ruby-2.6.7; \
     ";
-    
+
+COPY ./theme /usr/src/redmine/public/themes/main
+
 COPY ./plugins /usr/src/redmine/plugins
 
 COPY ./docker/docker-entrypoint.sh /
