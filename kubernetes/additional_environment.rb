@@ -3,6 +3,7 @@ config.log_level = :warn
 config.session_store(
   :cookie_store,
   :key => '_redmine_session',
+  :secure => true,
   :path => config.relative_url_root || '/',
   :same_site => :lax
 )

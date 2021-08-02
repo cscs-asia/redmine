@@ -17,3 +17,4 @@ configMapGenerator:
 images:
 - name: redmine
   newName: local-redmine
+  newTag: "1627921171"

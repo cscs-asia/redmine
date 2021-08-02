@@ -1,6 +1,7 @@
 require 'account_controller'
 require 'json'
 require 'uri'
+require 'cgi'
 
 class GoogleOauthController < AccountController
   include Helpers::Checker
@@ -10,10 +11,10 @@ class GoogleOauthController < AccountController
   def oauth_by_google
     if Setting.plugin_google_oauth[:oauth_authentification]
       if allowed_host_for?(params[:back_url])
-        flash[:error] = l(:notice_host_not_allowed, :url => params[:back_url])
+        flash[:error] = l(:notice_host_not_allowed, :url => CGI.escapeHTML(params[:back_url]))
         redirect_to signin_path
       else
-        session[:back_url] = params[:back_url]
+        session[:back_url] = CGI.escapeHTML(params[:back_url])
         redirect_to oauth_client.auth_code.authorize_url(:redirect_uri => oauth_google_callback_url, :scope => scopes)
       end
     else
