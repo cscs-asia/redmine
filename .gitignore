@@ -1,2 +1,4 @@
 kubernetes/configuration.yml
 kubernetes/postgresql.env
+kubernetes/kustomize
+theme/*

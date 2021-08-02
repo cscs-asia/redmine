@@ -62,9 +62,9 @@ spec:
             - name: redmine-pv
               subPath: plugins/openpgp
               mountPath: /usr/src/redmine/plugins/openpgp
-            - mountPath: /home/redmine/.gnupg
-              subPath: gnupg
+            - subPath: gnupg
               name: redmine-pv
+              mountPath: /home/redmine/.gnupg
       volumes:
         - name: redmine-pv
           persistentVolumeClaim:
