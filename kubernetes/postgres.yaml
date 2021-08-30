@@ -15,6 +15,7 @@ spec:
       containers:
         - name: postgres
           image: postgres:13.2
+          args: ["-c", "log_statement=all", "-c", "logging_collector=on", "-c", "log_directory=/var/log/postgresql"]
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
@@ -22,9 +23,13 @@ spec:
             - configMapRef:
                 name: environment
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+            - name: postgre-pv
+              subPath: data
+              mountPath: /var/lib/postgresql/data
+            - name: postgre-pv
+              subPath: log
+              mountPath: /var/log/postgresql
       volumes:
-        - name: postgredb
+        - name: postgre-pv
           persistentVolumeClaim:
             claimName: postgres-pv-claim

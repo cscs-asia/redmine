@@ -13,3 +13,5 @@ config.action_dispatch.default_headers = {
   'X-XSS-Protection' => '1; mode=block',
   'X-Content-Type-Options' => 'nosniff'
 }
+
+config.action_mailer.logger = Logger.new(File.dirname(__FILE__) + "/log/#{ENV['RAILS_ENV']}-mailer.log")

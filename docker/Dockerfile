@@ -12,6 +12,8 @@ RUN /bin/bash -c " \
       rvm --default use ruby-2.6.7; \
     ";
 
+RUN /bin/bash -c "ln -s /usr/bin/gpg /usr/bin/gpg2";
+
 COPY ./theme /usr/src/redmine/public/themes/main
 
 COPY ./plugins /usr/src/redmine/plugins
@@ -19,5 +21,7 @@ COPY ./plugins /usr/src/redmine/plugins
 COPY ./docker/docker-entrypoint.sh /
 
 COPY nginx.conf /etc/nginx/sites-enabled/default
+
+RUN /bin/bash -c "bundle install";
 
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]

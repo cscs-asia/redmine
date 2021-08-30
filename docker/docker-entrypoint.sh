@@ -4,6 +4,7 @@ set -Eeo pipefail
 
 if [ "$(id -u)" = '0' ]; then
 	/etc/init.d/nginx start
+	chown -R redmine:redmine /home/redmine/.gnupg
 fi
 
 # usage: file_env VAR [DEFAULT]
@@ -161,7 +162,9 @@ cp ./additional_environment.rb ./config/additional_environment.rb || echo "Not f
 cp ./configuration.yml ./config/configuration.yml || echo "Not found configuration.yml"
 cp ./zh-TW.yml ./config/locales/zh-TW.yml || echo "Not found zh-TW.yml"
 
-bundle install --without development test
-rake redmine:plugins:migrate RAILS_ENV=production
+export GPG_TTY="$(tty)"
+
+bundle install
+RAILS_ENV=production rake redmine:plugins:migrate
 
 exec "$@"
